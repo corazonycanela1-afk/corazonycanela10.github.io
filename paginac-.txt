@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Postres Tradicionales</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#d9d9d9;
+}
+
+/* Barra superior */
+.barra{
+    background:#e2b999;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+}
+
+.barra h1{
+    margin:0;
+    font-family:"Times New Roman", serif;
+}
+
+.boton{
+    background:#f3e6a6;
+    border:1px solid #b38b00;
+    padding:10px 20px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* Secciones */
+.seccion{
+    background:#e2b999;
+    text-align:center;
+    padding:10px;
+    font-family:"Times New Roman", serif;
+    font-size:28px;
+    font-weight:bold;
+}
+
+/* Contenedor productos */
+.contenedor{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    padding:30px;
+}
+
+/* Producto */
+.producto{
+    width:250px;
+    margin:20px;
+    text-align:center;
+}
+
+.producto img{
+    width:230px;
+    height:180px;
+    object-fit:cover;
+}
+
+/* Contador */
+.contador{
+    display:flex;
+    justify-content:center;
+    margin-top:10px;
+}
+
+.contador button{
+    width:40px;
+    height:35px;
+    font-size:22px;
+    border:1px solid black;
+    background:#e6e6e6;
+    cursor:pointer;
+}
+
+.contador input{
+    width:50px;
+    height:35px;
+    text-align:center;
+    border:1px solid black;
+    font-size:18px;
+}
+
+/* Precio */
+.precio{
+    font-weight:bold;
+    font-size:20px;
+    margin-top:8px;
+}
+
+/* Descripción */
+.descripcion{
+    text-align:left;
+    font-size:18px;
+    margin-top:5px;
+}
+
+/* Botón inicio */
+.inicio{
+    background:#e6a97d;
+    padding:8px 20px;
+    text-decoration:none;
+    color:blue;
+    font-size:18px;
+}
+
+</style>
+
+<script>
+function cambiarCantidad(id, valor){
+    let input = document.getElementById(id);
+    let cantidad = parseInt(input.value);
+
+    if(isNaN(cantidad)){ cantidad = 0; }
+
+    cantidad += valor;
+
+    if(cantidad < 0){ cantidad = 0; }
+
+    input.value = cantidad;
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- Barra -->
+<div class="barra">
+<div style="font-size:28px; color:#6b003b;">
+Descuento aplicado: $0.00
+</div>
+
+<h1>Postres Tradicionales</h1>
+
+<button class="boton">Realizar Pedido</button>
+</div>
+
+<!-- POSTRES TRADICIONALES -->
+<div class="contenedor">
+
+<div class="producto">
+<img src="arroz.jpg">
+<div class="contador">
+<button onclick="cambiarCantidad('p1',-1)">-</button>
+<input type="text" id="p1" value="0">
+<button onclick="cambiarCantidad('p1',1)">+</button>
+</div>
+<div class="precio">$35</div>
+<div class="descripcion">
+Arroz con Canela: Arroz, leche, azúcar y canela. Lácteos.
+</div>
+</div>
+
+<div class="producto">
+<img src="flan.jpg">
+<div class="contador">
+<button onclick="cambiarCantidad('p2',-1)">-</button>
+<input type="text" id="p2" value="0">
+<button onclick="cambiarCantidad('p2',1)">+</button>
+</div>
+<div class="precio">$30</div>
+<div class="descripcion">
+Flan de Canela: Leche, huevo, azúcar y canela.
+</div>
+</div>
+
+<div class="producto">
+<img src="budin.jpg">
+<div class="contador">
+<button onclick="cambiarCantidad('p3',-1)">-</button>
+<input type="text" id="p3" value="0">
+<button onclick="cambiarCantidad('p3',1)">+</button>
+</div>
+<div class="precio">$25</div>
+<div class="descripcion">
+Budín de Canela: Harina, azúcar, mantequilla, huevo y canela.
+</div>
+</div>
+
+<div class="producto">
+<img src="torrejas.jpg">
+<div class="contador">
+<button onclick="cambiarCantidad('p4',-1)">-</button>
+<input type="text" id="p4" value="0">
+<button onclick="cambiarCantidad('p4',1)">+</button>
+</div>
+<div class="precio">$25</div>
+<div class="descripcion">
+Torrejas con Canela: Pan, leche, huevo y azúcar.
+</div>
+</div>
+
+</div>
+
+<!-- MANZANA -->
+<div class="seccion">Manzana con Canela</div>
+
+<div class="contenedor">
+
+<div class="producto">
+<img src="tarta.jpg">
+<div class="contador">
+<button onclick="cambiarCantidad('p5',-1)">-</button>
+<input type="text" id="p5" value="0">
+<button onclick="cambiarCantidad('p5',1)">+</button>
+</div>
+<div class="precio">$40</div>
+<div class="descripcion">
+Tarta de Manzana y Canela.
+</div>
+</div>
+
+<div class="producto">
+<img src="rollitos.jpg">
+<div class="contador">
+<button onclick="cambiarCantidad('p6',-1)">-</button>
+<input type="text" id="p6" value="0">
+<button onclick="cambiarCantidad('p6',1)">+</button>
+</div>
+<div class="precio">$25</div>
+<div class="descripcion">
+Rollitos de Manzana y Canela.
+</div>
+</div>
+
+</div>
+
+<!-- PASTELES -->
+<div class="seccion">Pasteles y Repostería</div>
+
+<div class="contenedor">
+
+<div class="producto">
+<img src="roles.jpg">
+<div class="contador">
+<button onclick="cambiarCantidad('p7',-1)">-</button>
+<input type="text" id="p7" value="0">
+<button onclick="cambiarCantidad('p7',1)">+</button>
+</div>
+<div class="precio">$30</div>
+<div class="descripcion">
+Roles de Canela.
+</div>
+</div>
+
+<div class="producto">
+<img src="brownie.jpg">
+<div class="contador">
+<button onclick="cambiarCantidad('p8',-1)">-</button>
+<input type="text" id="p8" value="0">
+<button onclick="cambiarCantidad('p8',1)">+</button>
+</div>
+<div class="precio">$20</div>
+<div class="descripcion">
+Brownie con Canela y Nueces.
+</div>
+</div>
+
+<div class="producto">
+<img src="galletas.jpg">
+<div class="contador">
+<button onclick="cambiarCantidad('p9',-1)">-</button>
+<input type="text" id="p9" value="0">
+<button onclick="cambiarCantidad('p9',1)">+</button>
+</div>
+<div class="precio">$20</div>
+<div class="descripcion">
+Galletas de Canela.
+</div>
+</div>
+
+</div>
+
+<!-- GOURMET -->
+<div class="seccion">Postres Especiales / Gourmet</div>
+
+<div class="contenedor">
+
+<div class="producto">
+<img src="helado.jpg">
+<div class="contador">
+<button onclick="cambiarCantidad('p10',-1)">-</button>
+<input type="text" id="p10" value="0">
+<button onclick="cambiarCantidad('p10',1)">+</button>
+</div>
+<div class="precio">$25</div>
+<div class="descripcion">
+Helado de Canela.
+</div>
+</div>
+
+<div class="producto">
+<img src="pannacotta.jpg">
+<div class="contador">
+<button onclick="cambiarCantidad('p11',-1)">-</button>
+<input type="text" id="p11" value="0">
+<button onclick="cambiarCantidad('p11',1)">+</button>
+</div>
+<div class="precio">$45</div>
+<div class="descripcion">
+Panna Cotta de Canela.
+</div>
+</div>
+
+</div>
+
+<br><br>
+<center>
+<a href="index.html" class="inicio">Inicio</a>
+</center>
+
+</body>
+</html>

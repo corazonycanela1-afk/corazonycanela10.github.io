@@ -1,0 +1,380 @@
+<html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Productos - Corazón y Canela</title>
+
+<!-- LUPA PROFESIONAL -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#d9d9d9;
+}
+
+
+.nav{
+background:#f4b9b9;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-family:"Times New Roman";
+font-weight:bold;
+font-size:22px;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo img{
+height:40px;
+}
+
+.icono{
+font-size:22px;
+cursor:pointer;
+margin:0 5px;
+color:black;
+}
+
+#buscador{
+padding:6px;
+border-radius:5px;
+border:none;
+margin-right:5px;
+}
+
+.sidebar{
+position:fixed;
+left:-250px;
+top:0;
+width:250px;
+height:100%;
+background:#f4b9b9;
+padding-top:60px;
+transition:0.3s;
+z-index:1000;
+}
+
+.sidebar a{
+display:block;
+padding:15px;
+text-decoration:none;
+color:black;
+font-weight:bold;
+}
+
+.sidebar a:hover{
+background:#f4b9b9;
+}
+
+.seccion{
+background:#f4b9b9;
+text-align:center;
+padding:10px;
+font-size:26px;
+font-weight:bold;
+margin-top:20px;
+}
+
+.contenedor{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+padding:20px;
+}
+
+.producto{
+width:220px;
+margin:15px;
+text-align:center;
+background:white;
+padding:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.producto:hover{
+transform:scale(1.05);
+}
+
+.producto img{
+width:200px;
+height:150px;
+object-fit:cover;
+}
+
+.precio{
+font-weight:bold;
+}
+
+/* MODAL */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+
+.modal-contenido{
+background:white;
+padding:20px;
+width:320px;
+text-align:center;
+max-height:90%;
+overflow:auto;
+}
+
+.boton{
+background:#f4b9b9;
+padding:8px;
+margin-top:10px;
+cursor:pointer;
+font-weight:bold;
+border:none;
+border-radius:5px;
+}
+
+/* NOTIFICACIÓN */
+.notificacion{
+position:fixed;
+top:10px;
+right:10px;
+background:white;
+padding:15px;
+border:2px solid #f4b9b9;
+display:none;
+width:250px;
+z-index:3000;
+}
+
+.notificacion img{
+width:60px;
+height:60px;
+object-fit:cover;
+}
+</style>
+
+<script>
+function abrirMenu(){
+document.getElementById("sidebar").style.left="0";
+}
+
+function cerrarMenu(){
+document.getElementById("sidebar").style.left="-250px";
+}
+
+function abrirProducto(nombre,precio,img,descripcion){
+document.getElementById("modal").style.display="flex";
+document.getElementById("m-nombre").innerText=nombre;
+document.getElementById("m-precio").innerText="$"+precio;
+document.getElementById("m-img").src=img;
+document.getElementById("m-desc").innerText=descripcion;
+document.getElementById("cantidad").value=1;
+}
+
+function cerrarProducto(){
+document.getElementById("modal").style.display="none";
+}
+
+function agregarCarrito(){
+let nombre=document.getElementById("m-nombre").innerText;
+let precio=document.getElementById("m-precio").innerText.replace("$","");
+let cantidad=document.getElementById("cantidad").value;
+let img=document.getElementById("m-img").src;
+
+let carrito=JSON.parse(localStorage.getItem("carrito"))||[];
+carrito.push({nombre,precio,cantidad,img});
+localStorage.setItem("carrito",JSON.stringify(carrito));
+
+document.getElementById("noti-img").src=img;
+document.getElementById("noti-texto").innerHTML=
+"<b>"+nombre+"</b><br>Cantidad: "+cantidad;
+
+document.getElementById("notificacion").style.display="block";
+
+cerrarProducto();
+}
+
+function cerrarNoti(){
+document.getElementById("notificacion").style.display="none";
+}
+
+function buscarProducto(){
+let input=document.getElementById("buscador").value.toLowerCase();
+let productos=document.getElementsByClassName("producto");
+
+for(let i=0;i<productos.length;i++){
+let texto=productos[i].innerText.toLowerCase();
+if(texto.includes(input)){
+productos[i].style.display="block";
+}else{
+productos[i].style.display="none";
+}
+}
+}
+</script>
+</head>
+
+<body>
+
+<div class="nav">
+<span class="icono" onclick="abrirMenu()">☰</span>
+
+<div class="logo">
+<img src="logo.png">
+Corazón y Canela
+</div>
+
+<div>
+<input type="text" id="buscador" placeholder="Buscar..." onkeyup="buscarProducto()">
+<span class="icono"><i class="fa-solid fa-magnifying-glass"></i></span>
+<span class="icono" onclick="location.href='carrito.html'">🛒</span>
+</div>
+</div>
+
+<div id="sidebar" class="sidebar">
+<a href="index.html">Inicio</a>
+<a href="productos.html">Productos</a>
+<a href="Nosotros.html">Nosotros</a>
+<a href="#" onclick="cerrarMenu()">Cerrar ✖</a>
+</div>
+<!-- TODAS LAS SECCIONES Y PRODUCTOS EXACTOS -->
+
+<div class="seccion">Postres Tradicionales</div>
+<div class="contenedor">
+
+<div class="producto" onclick="abrirProducto('Arroz con Canela',35,'arroz.jpg','Arroz, leche, azúcar y canela. Lácteos.')">
+<img src="arroz.jpg">
+<b>Arroz con Canela</b>
+<div class="precio">$35</div>
+</div>
+
+<div class="producto" onclick="abrirProducto('Flan de Canela',30,'flan.jpg','Flan suave con esencia de canela y caramelo casero. Leche, huevo, azúcar y canela. Lácteos y huevo.')">
+<img src="flan.jpg">
+<b>Flan de Canela</b>
+<div class="precio">$30</div>
+</div>
+
+<div class="producto" onclick="abrirProducto('Budín de Canela',25,'budin.jpg','Bizcocho húmedo con mantequilla, azúcar y canela. Harina, azúcar, huevo, leche y canela. Gluten, lácteos y huevo.')">
+<img src="budin.jpg">
+<b>Budín de Canela</b>
+<div class="precio">$25</div>
+</div>
+
+<div class="producto" onclick="abrirProducto('Torrejas con Canela',25,'torrejas.jpg','Pan suave bañado en leche y espolvoreado con canela y azúcar. Gluten, lácteos y huevo.')">
+<img src="torrejas.jpg">
+<b>Torrejas con Canela</b>
+<div class="precio">$25</div>
+</div>
+
+</div>
+
+
+<div class="seccion">Manzana con Canela</div>
+<div class="contenedor">
+
+<div class="producto" onclick="abrirProducto('Pay de Manzana y Canela',40,'pay.jpg','Base crujiente rellena de manzana natural y canela. Gluten, lácteos y huevo.')">
+<img src="pay.jpg">
+<b>Pay de Manzana y Canela</b>
+<div class="precio">$40</div>
+</div>
+
+<div class="producto" onclick="abrirProducto('Rollitos de Manzana y Canela',25,'rollitos.jpg','Rollitos suaves rellenos de manzana y canela glaseada. Harina, mantequilla, azúcar, manzana, canela y huevo.')">
+<img src="rollitos.jpg">
+<b>Rollitos de Manzana y Canela</b>
+<div class="precio">$25</div>
+</div>
+
+</div>
+
+
+<div class="seccion">Pasteles y Repostería</div>
+<div class="contenedor">
+
+<div class="producto" onclick="abrirProducto('Roles de Canela',30,'roles.jpg','Pan dulce esponjoso con espiral de canela y glaseado. Harina, azúcar, mantequilla, leche, huevo y canela.')">
+<img src="roles.jpg">
+<b>Roles de Canela</b>
+<div class="precio">$30</div>
+</div>
+
+<div class="producto" onclick="abrirProducto('Brownie con Canela y Nueces',20,'brownie.jpg','Brownie de chocolate con toque de canela y nueces. Harina, azúcar, mantequilla, huevo, cocoa, canela y nuez.')">
+<img src="brownie.jpg">
+<b>Brownie con Canela y Nueces</b>
+<div class="precio">$20</div>
+</div>
+
+<div class="producto" onclick="abrirProducto('Galletas de Canela',20,'galletas.jpg','Galletas crujientes sabor canela con azúcar espolvoreada. Harina, azúcar, mantequilla, huevo y canela.')">
+<img src="galletas.jpg">
+<b>Galletas de Canela</b>
+<div class="precio">$20</div>
+</div>
+
+</div>
+
+
+<div class="seccion">Postres Especiales / Gourmet</div>
+<div class="contenedor">
+
+<div class="producto" onclick="abrirProducto('Helado de Canela',25,'helado.jpg','Helado artesanal cremoso con esencia natural de canela. Leche, crema, azúcar y canela.')">
+<img src="helado.jpg">
+<b>Helado de Canela</b>
+<div class="precio">$25</div>
+</div>
+
+<div class="producto" onclick="abrirProducto('Panna Cotta de Canela',45,'pannacotta.jpg','Postre italiano suave con infusión de canela y crema dulce. Leche, crema, azúcar, gelatina sin sabor y canela.')">
+<img src="pannacotta.jpg">
+<b>Panna Cotta de Canela</b>
+<div class="precio">$45</div>
+</div>
+
+</div>
+
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+<div class="modal-contenido">
+<img id="m-img" width="200"><br>
+<h3 id="m-nombre"></h3>
+<p id="m-precio"></p>
+<p id="m-desc"></p>
+
+Cantidad:
+<input type="number" id="cantidad" min="1" value="1">
+
+<button class="boton" onclick="agregarCarrito()">Agregar al carrito</button>
+
+<p style="font-size:12px;margin-top:10px;">
+⚠ Importante: Todos los pedidos se realizan con anticipación.
+</p>
+
+<button class="boton" onclick="cerrarProducto()">Cerrar</button>
+</div>
+</div>
+
+
+<!-- NOTIFICACIÓN -->
+<div class="notificacion" id="notificacion">
+<img id="noti-img"><br>
+<span id="noti-texto"></span><br><br>
+<button onclick="cerrarNoti()">Seguir comprando</button>
+<button onclick="location.href='carrito.html'">Ver carrito</button>
+</div>
+
+</body>
+</html

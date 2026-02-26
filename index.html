@@ -1,0 +1,289 @@
+<html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Corazón y Canela</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background-color:#f6caca;
+}
+
+header{
+    background-color:#f4b9b9;
+    padding:20px;
+    text-align:center;
+    position:relative;
+}
+
+.logo{
+    position:absolute;
+    left:30px;
+    top:15px;
+}
+
+.logo img{
+    width:140px;
+    border-radius:50%;
+    border:4px solid white;
+}
+
+.icons{
+    position:absolute;
+    right:30px;
+    top:40px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.icons i{
+    margin-left:15px;
+    color:#5a1f1f;
+    transition:0.3s;
+}
+
+.icons i:hover{
+    color:#a00000;
+}
+
+h1{
+    font-family:Georgia, serif;
+    font-size:34px;
+    color:#5a1f1f;
+}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:10px;
+}
+
+nav a{
+    background-color:#8b0000;
+    color:white;
+    padding:10px 35px;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    background-color:#a00000;
+    transform:scale(1.05);
+}
+
+.frase{
+    text-align:center;
+    background-color:white;
+    padding:15px;
+    font-size:18px;
+}
+
+.banner img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+}
+
+.postres{
+    background-color:#f5f5f5;
+    padding:40px;
+}
+
+.postres h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.contenedor{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:180px;
+    text-align:center;
+}
+
+.card img{
+    width:170px;
+    height:120px;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+.card h3{
+    font-size:16px;
+    margin:8px 0 5px;
+}
+
+.card p{
+    font-size:13px;
+    color:#444;
+}
+
+.nosotros{
+    background-color:white;
+    padding:40px;
+    text-align:center;
+}
+
+.nosotros h2{
+    margin-bottom:15px;
+}
+
+.nosotros p{
+    max-width:700px;
+    margin:auto;
+    font-size:16px;
+}
+
+/* FOOTER */
+footer{
+    background-color:#f4b9b9;
+    padding:25px;
+}
+
+.redes{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+}
+
+.redes a{
+    text-decoration:none;
+    color:black;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.redes i{
+    margin-right:8px;
+    font-size:20px;
+}
+
+.redes a:hover{
+    color:#8b0000;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+
+    <h1>Corazón y Canela</h1>
+
+    <nav>
+        <a href="">Inicio</a>
+        <a href="Productos.html">Productos</a>
+        <a href="Nosotros.html">Nosotros</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fa-solid fa-magnifying-glass" onclick="buscar()"></i>
+        <i class="fa-solid fa-bell" onclick="notificacion()"></i>
+    </div>
+</header>
+
+<section class="frase">
+    Una razón más para sonreír
+</section>
+
+<section class="banner">
+    <img src="banner.jpg" alt="Banner">
+</section>
+
+<section class="postres">
+    <h2>Postres</h2>
+    <div class="contenedor">
+        <div class="card">
+            <img src="roles.jpg" alt="Roles de canela">
+            <h3>Roles de canela</h3>
+            <p>Contiene: gluten, lácteos y huevo.</p>
+        </div>
+
+        <div class="card">
+            <img src="pay.jpg" alt="Pay de manzana">
+            <h3>Pay de manzana</h3>
+            <p>Contiene: gluten, lácteos y huevo.</p>
+        </div>
+
+        <div class="card">
+            <img src="brownie.jpg" alt="Brownie con canela">
+            <h3>Brownie con canela</h3>
+            <p>Contiene: gluten, lácteos y huevo.</p>
+        </div>
+
+        <div class="card">
+            <img src="galletas.jpg" alt="Galletas de canela">
+            <h3>Galletas de canela</h3>
+            <p>Contiene: gluten y lácteos.</p>
+        </div>
+
+        <div class="card">
+            <img src="flan.jpg" alt="Flan de canela">
+            <h3>Flan de canela</h3>
+            <p>Contiene: lácteos y huevo.</p>
+        </div>
+
+        <div class="card">
+            <img src="arroz.jpg" alt="Arroz con leche">
+            <h3>Arroz con leche</h3>
+            <p>Contiene: lácteos.</p>
+        </div>
+
+     </section>
+
+    <center><p>En Corazón y Canela elaboramos cada postre con dedicación, ingredientes frescos y mucho amor. Nuestro objetivo es ofrecer sabores caseros que alegren tus momentos especiales.</p></center>
+</section>
+
+<footer>
+    <div class="redes">
+        <a href="https://wa.me/526471258585" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>6471258585
+        </a>
+
+        <a href="https://www.instagram.com/corazon_y_canela" target="_blank">
+            <i class="fa-brands fa-instagram"></i>Instagram
+        </a>
+
+        <a href="https://www.tiktok.com/@corazon_y_canela" target="_blank">
+            <i class="fa-brands fa-tiktok"></i>TikTok
+        </a>
+
+        <a href="https://www.facebook.com/share/181EC2bRDY/" target="_blank">
+            <i class="fa-brands fa-facebook"></i>Facebook
+        </a>
+    </div>
+</footer>
+<body>
+<script>
+function buscar(){
+    let texto = prompt("¿Qué postre estás buscando?");
+    if(texto){
+        alert("Buscando: " + texto);
+    }
+}
+
+function notificacion(){
+    // Redirige a la página de notificaciones
+    window.location.href = "NOTIFICACIONES.HTML";
+}
+</script>
+
+</body>
+</html>
